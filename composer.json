@@ -8,6 +8,7 @@
             "email": "popoweiqi@qq.com"
         }
     ],
+    "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
             "popohum\\unlimited-tree\\":"src/"
