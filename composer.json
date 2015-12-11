@@ -14,7 +14,7 @@
     },
     "autoload": {
         "psr-4": {
-            "popohum\\unlimited-tree\\":"src/"
+            "Popohum\\UnlimitedTree\\":"src/"
         }
     }
 }

@@ -7,10 +7,11 @@
  */
 class Tree
 {
+    protected $tree=array();
     public function __construct($array)
     {
-        $tree = new Builder($array);
-        $this->printer($tree);
+        $res = new Builder($array);
+        $this->tree=$this->printer($res->leaf());
     }
 
     public function printer($tree)
@@ -19,12 +20,12 @@ class Tree
         foreach ($tree as $v) {
             if ($this->checkChild($v)) {
                 $res .= "<li>";
-                $res .= '<span> <i class="fa fa-folder-open"> </i> 节点 </span><a id="' . $v["id"] . '"> ' . $v["cName"] . '</a>';
+                $res .= '<span> <i class="fa fa-folder-open"> </i> 节点 </span><a id="' . $v["id"] . '"> ' . $v["title"] . '</a>';
                 $res .= $this->printer($v['child']);
                 $res .= "</li>";
             } else {
                 $res .= "<li>";
-                $res .= '<span> <i class="fa fa-folder-open"> </i> 节点 </span><a id="' . $v["id"] . '"> ' . $v["cName"] . '</a>';
+                $res .= '<span> <i class="fa fa-folder-close"> </i> 节点 </span><a id="' . $v["id"] . '"> ' . $v["title"] . '</a>';
                 $res .= "</li>";
             }
         }
@@ -39,6 +40,11 @@ class Tree
         } else {
             return false;
         }
+    }
+
+    public function getTree()
+    {
+        return $this->tree;
     }
 
 }
